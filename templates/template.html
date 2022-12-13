@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<style>
+    .container {
+        width: 85%;
+        margin: auto;
+    }
+
+    h1 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .outer {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 30px;
+        margin-top: 100px;
+    }
+
+    .product {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-gap: 30px;
+        margin-top: 100px;
+    }
+
+    img {
+        height: 170px;
+        width: 250px;
+        overflow: hidden;
+        transition: .5s;
+    }
+
+    .text {
+        font-size: large;
+        font-weight: 700;
+        padding: 10px;
+        margin-top: 7px;
+        transition: .5s;
+    }
+
+    .inner,
+    .product {
+        border: 2px solid black;
+        margin: auto;
+        padding: 15px;
+        box-shadow: 5px 10px #888888;
+        overflow: hidden;
+
+    }
+
+    .product {
+        border: 2px solid black;
+        margin: auto;
+        padding: 15px;
+        height: 450px;
+        box-shadow: 5px 10px #888888;
+        overflow: hidden;
+
+    }
+
+    .inner:hover img {
+        transform: scale(120%) rotate(2deg);
+
+    }
+
+    .product:hover img {
+        transform: scale(120%);
+
+    }
+
+    .inner:hover .text {
+        transform: rotate(2deg);
+
+    }
+
+    input {
+        padding: 8px 10px;
+        width: 150px;
+        height: 40px;
+        font-size: 15px;
+        border: 0px;
+        background: #D5527D;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 3px;
+        outline: none;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Collection</h1>
+        <div class="outer">
+            {%for category in main_categories%}
+            <div class="inner">
+                <img src="{{category.image}}">
+                <div class="text">{{category.category_name}}</div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+
+    <!--also more-->
+    <div class="container">
+        <h1>You may also like</h1>
+        <div class="outer">
+            {%for items in featured_items%}
+            <div class="product">
+                <img src="{{items.gallery[0].image}}">
+                <div class="text"> {{items.product_name}}</div>
+                <div class="text"> ${{items.price}}CAD</div>
+                <div>
+                    <input type="button" value="Add to cart">
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
