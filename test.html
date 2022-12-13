@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>You may also like</h1>
+  <div class="outer">
+    {%for items in featured_items%}
+    <div class="product">
+      <img src="{{items.gallery[0].image}}">
+      <div class="text"> {{items.product_name}}</div>
+      <div class="text"> ${{items.price}}CAD</div>
+      <div>
+        <input type="button" value="Add to cart">
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</div>
